@@ -1,6 +1,5 @@
 package org.cresta.weather;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.cresta.weather.domain.WeatherRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
