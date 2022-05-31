@@ -10,6 +10,7 @@ import org.cresta.weather.service.WeatherService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class WeatherController {
     private final TimeService timeService;
 
     @PostMapping("/hello")
-    public ResponseEntity getWeather(@RequestBody WeatherRequest weatherRequest) throws IOException, InterruptedException, ApiException {
+    public ResponseEntity getWeather(@RequestBody @Valid WeatherRequest weatherRequest) throws IOException, InterruptedException, ApiException {
         try{
         WeatherDTO weatherDTO = weatherService.getWeather(weatherRequest.getUser(), weatherRequest.getLocation());
         return ResponseEntity.ok(weatherDTO);
