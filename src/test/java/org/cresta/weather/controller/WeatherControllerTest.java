@@ -33,7 +33,7 @@ public class WeatherControllerTest {
     private WeatherController weatherController;
 
     @BeforeEach
-    public void setUp() throws IOException, InterruptedException, ApiException {
+    public void setUp() throws Exception {
         when(locationGateway.getLocation("Denver")).thenReturn(new LatLng(1.11, 2.22));
 //        when(weatherGateway.getWeather(1.11,2.22)).thenReturn(Weather.builder().temp(99.99).build());
     }

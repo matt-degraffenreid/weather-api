@@ -27,7 +27,10 @@ public class WeatherController {
         return ResponseEntity.ok(weatherDTO);
         }
         catch (NotFoundException ex){
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+        catch (Exception ex){
+            return ResponseEntity.internalServerError().body(ex.getMessage());
         }
     }
 

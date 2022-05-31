@@ -27,11 +27,8 @@ public class WeatherService {
 
     private static final Logger log = LoggerFactory.getLogger(WeatherService.class);
 
-    public WeatherDTO getWeather(String user, String location) throws IOException, InterruptedException, ApiException {
+    public WeatherDTO getWeather(String user, String location) throws Exception {
         LatLng coords = locationGateway.getLocation(location);
-        if(coords == null)
-            throw new NotFoundException("The Location entered could not be found");
-
         Weather weather = weatherGateway.getWeather(coords.lat, coords.lng).toBuilder().user(user).build();
 
         log.info("Saving: " + weather.toString());
