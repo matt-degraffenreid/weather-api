@@ -1,23 +1,25 @@
-package org.cresta.weather.service;
+package org.cresta.weather.controller;
 
 import com.google.maps.errors.ApiException;
-import com.google.maps.errors.NotFoundException;
+import com.google.maps.model.LatLng;
+import org.cresta.weather.domain.WeatherRequest;
 import org.cresta.weather.gateway.LocationGateway;
 import org.cresta.weather.gateway.WeatherGateway;
+import org.cresta.weather.service.WeatherService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 @SpringBootTest
-public class WeatherDTODAOServiceTest {
+public class WeatherControllerTest {
     @Mock
     private LocationGateway locationGateway;
 
@@ -27,23 +29,22 @@ public class WeatherDTODAOServiceTest {
     @Autowired
     private WeatherService weatherService;
 
+    @Autowired
+    private WeatherController weatherController;
+
     @BeforeEach
     public void setUp() throws IOException, InterruptedException, ApiException {
-        when(locationGateway.getLocation("fjnfjjk")).thenReturn(null);
+        when(locationGateway.getLocation("Denver")).thenReturn(new LatLng(1.11, 2.22));
 //        when(weatherGateway.getWeather(1.11,2.22)).thenReturn(Weather.builder().temp(99.99).build());
-
     }
-
     @Test
     public void contextLoads() throws Exception {
-        assertThat(weatherService).isNotNull();
+        assertThat(weatherController).isNotNull();
     }
-
     @Test
-    public void givenLocationThatDoesNotExistShouldThrowNotFoundException() throws IOException, InterruptedException, ApiException {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            assertThat(weatherService.getWeather("fjnfjjk", "rhoiugfheor")).isEqualTo("");
-        });
-
+    public void givenDataWhenStoringShouldReturnOkResponse() throws IOException, InterruptedException, ApiException {
+        WeatherRequest weatherRequest = WeatherRequest.builder().user("123456").location("Denver").build();
+        assertThat(this.weatherController.getWeather(weatherRequest).getStatusCode()).isEqualTo(HttpStatus.OK);
     }
+
 }

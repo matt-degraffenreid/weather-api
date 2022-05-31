@@ -8,7 +8,6 @@ import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 
 import java.io.IOException;
