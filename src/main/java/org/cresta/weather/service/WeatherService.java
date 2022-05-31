@@ -1,8 +1,5 @@
 package org.cresta.weather.service;
 
-
-import com.google.maps.errors.ApiException;
-import com.google.maps.errors.NotFoundException;
 import com.google.maps.model.LatLng;
 import lombok.AllArgsConstructor;
 import org.cresta.weather.domain.WeatherDTO;
@@ -13,8 +10,6 @@ import org.cresta.weather.repository.WeatherRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 @Service
 @AllArgsConstructor
