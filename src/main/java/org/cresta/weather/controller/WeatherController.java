@@ -37,6 +37,10 @@ public class WeatherController {
 
     @PostMapping("goodbye")
     public ResponseEntity getElapsedTime(@RequestBody WeatherRequest weatherRequest){
-        return ResponseEntity.ok(timeService.getElapsedTime(weatherRequest.getUser()));
+        try{
+            return ResponseEntity.ok(timeService.getElapsedTime(weatherRequest.getUser()));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

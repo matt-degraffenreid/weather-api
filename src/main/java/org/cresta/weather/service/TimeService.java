@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
+import static java.util.Objects.isNull;
 
 @Service
 @AllArgsConstructor
@@ -18,9 +19,11 @@ public class TimeService {
 
     private final WeatherRepository weatherRepository;
 
-    public long getElapsedTime(String user){
+    public long getElapsedTime(String user) throws Exception {
         Weather userWeatherData = weatherRepository.findByUser(user);
-        log.info("Retrieved: " + userWeatherData.toString());
+        if(isNull(userWeatherData))
+            throw new Exception("User not found");
+        log.info("Retrieved: " + userWeatherData);
         return SECONDS.between(userWeatherData.getCreated_at(), LocalDateTime.now());
     }
 }

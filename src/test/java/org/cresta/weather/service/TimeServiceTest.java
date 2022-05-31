@@ -53,6 +53,8 @@ public class TimeServiceTest {
         try (MockedStatic<LocalDateTime> mockedStatic = mockStatic(LocalDateTime.class, Mockito.CALLS_REAL_METHODS)) {
             mockedStatic.when(LocalDateTime::now).thenReturn(LOCAL_DATE_TIME_FIXED);
             assertThat(timeService.getElapsedTime(USER)).isEqualTo(1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
