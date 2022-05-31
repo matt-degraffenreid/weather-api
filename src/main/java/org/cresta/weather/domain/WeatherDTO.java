@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Weather {
+public class WeatherDTO {
     private Double temp;
 
-    private String feels_like;
+    private Double feels_like;
 
-    private String pressure;
+    private Double pressure;
 
-    private String humidity;
+    private Double humidity;
 }

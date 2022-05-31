@@ -7,11 +7,12 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 import java.io.IOException;
-@Service
+@Component
 public class LocationGateway {
     @Value("${spring.google.apiKey}")
     private String googleApiKey;
