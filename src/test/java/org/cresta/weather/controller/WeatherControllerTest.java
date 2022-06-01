@@ -30,17 +30,6 @@ public class WeatherControllerTest {
     public void contextLoads(){
         assertThat(weatherController).isNotNull();
     }
-    @Test
-    public void givenNoUserIsSuppliedWhenGettingWeatherShouldReturnErrorResponse() throws IOException, InterruptedException, ApiException {
-        WeatherRequest weatherRequest = WeatherRequest.builder().location("Denver").build();
-        assertThat(weatherController.getWeather(weatherRequest).getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @Test
-    public void givenNoLocationIsSuppliedWhenGettingWeatherShouldReturnErrorResponse() throws IOException, InterruptedException, ApiException {
-        WeatherRequest weatherRequest = WeatherRequest.builder().user("John Doe").build();
-        assertThat(weatherController.getWeather(weatherRequest).getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
 
     @Test
     public void givenNoUserSuppliedWhenGettingElapsedTimeShouldReturnErrorResponse() throws IOException, InterruptedException, ApiException {
