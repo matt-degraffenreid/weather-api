@@ -31,7 +31,9 @@ public class Weather {
 
     private LocalDateTime created_at;
 
-    private Weather(Long id, String user, double temp, double feels_like, double pressure, double humidity, LocalDateTime created_at) {
+    private boolean exited;
+
+    private Weather(Long id, String user, double temp, double feels_like, double pressure, double humidity, LocalDateTime created_at, boolean exited ) {
         this.id = id;
         this.user = user;
         this.temp = temp;
@@ -39,6 +41,7 @@ public class Weather {
         this.pressure = pressure;
         this.humidity = humidity;
         this.created_at = isNull(created_at) ? LocalDateTime.now(): created_at;
+        this.exited = exited;
     }
 
     public Weather() {

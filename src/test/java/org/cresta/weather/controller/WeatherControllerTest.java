@@ -47,7 +47,4 @@ public class WeatherControllerTest {
         WeatherRequest weatherRequest = WeatherRequest.builder().build();
         assertThat(weatherController.getElapsedTime(weatherRequest).getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
-
-
-
 }
