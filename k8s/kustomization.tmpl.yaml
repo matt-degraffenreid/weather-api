@@ -1,0 +1,9 @@
+resources:
+  - deployment.yaml
+  - namespace.yaml
+  - service.yaml
+
+images:
+  - name: amazonaws.com/cresta-weather-app
+    newName: ${ECR_REPOSITORY}
+    newTag: ${IMAGE_TAG}
