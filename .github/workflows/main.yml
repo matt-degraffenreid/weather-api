@@ -57,6 +57,9 @@ jobs:
           chmod +x kubectl
           sudo mv kubectl /usr/local/bin/
           echo ${{ secrets.KUBECONFIG }} | base64 --decode > kubeconfig.yaml
+      - name: Install aws-iam-authenticator
+        uses: prepor/action-aws-iam-authenticator@master
+        run: aws-iam-authenticator
       - name: Deploy
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
