@@ -1,2 +1,2 @@
-cd /home/ec2-user/cresta
-./gradlew bootrun
+cd /home/ec2-user/cresta && ./gradlew bootrun
+
