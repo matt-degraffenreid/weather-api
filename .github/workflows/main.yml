@@ -8,7 +8,7 @@ jobs:
     environment: test
     env:
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-      OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }
+      OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
       SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
     steps:
       - uses: actions/checkout@v3
