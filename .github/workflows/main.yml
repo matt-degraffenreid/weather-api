@@ -8,9 +8,7 @@ jobs:
     environment: test
     env:
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-      OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+      OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY }
       SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
     steps:
       - uses: actions/checkout@v3
@@ -43,6 +41,6 @@ jobs:
         run: |
           aws deploy create-deployment \
             --application-name Git_Application \
-            --deployment-group-name development_gropup \
+            --deployment-group-name development_group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
